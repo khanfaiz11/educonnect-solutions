@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduConnect Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2d1b53;
+      --accent: #3a76f0;
+      --bg: #f5f6fa;
+      --text: #333;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease-out;
+    }
+
+    header .logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      background-color: var(--primary);
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .services-section, .contact-section, .office-section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .services-section h2, .contact-section h2, .office-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      animation: slideUp 1.5s ease-out;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-form {
+      flex: 1;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .contact-form button {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none; /* Hide original navigation */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .nav-toggle {
+        display: block;
+        background-color: var(--primary);
+        padding: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        background-color: var(--primary);
+        position: absolute;
+        top: 60px;
+        left: 0;
+      }
+
+      .nav-links a {
+        margin: 15px 0;
+        text-align: left;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      header {
+        padding: 20px 10px;
+      }
+
+      header .logo {
+        width: 80px;
+        margin-bottom: 10px;
+      }
+
+      header h1 {
+        font-size: 1.5rem; /* Smaller font size for mobile */
+      }
+
+      header p {
+        font-size: 1rem; /* Smaller font size for mobile */
+      }
+
+      .service-cards {
+        grid-template-columns: 1fr; /* Single column for small screens */
+        gap: 15px; /* Adjust spacing between cards */
+      }
+
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-info {
+        margin-bottom: 20px;
+      }
+
+      .contact-form input, .contact-form textarea {
+        width: 100%; /* Full width for mobile */
+        font-size: 1rem; /* Bigger text for readability */
+      }
+
+      .contact-form button {
+        width: 100%; /* Full width for button on mobile */
+        font-size: 1.1rem;
+      }
+
+      /* WhatsApp button adjustments */
+      .whatsapp-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px;
+        font-size: 20px; /* Adjusted size */
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#office">About</a>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </nav>
+
+  <header>
+    <img src="your-logo-url.png" alt="EduConnect Logo" class="logo">
+    <h1>EduConnect Solutions</h1>
+    <p>Your Partner in Digital School Services</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </header>
+
+  <section class="services-section" id="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+     <div class="card">
+  <h3><a href="education-portal.html">Education Portal 3.0</a></h3>
+  <p>Complete support for portal-related activities</p>
+</div>
+ <div class="card"><h3>RTE Portal Management</h3><p>Admission, document verification and seat tracking</p></div>
+      <div class="card"><h3>Teacher Services</h3><p>Login, profile update, leave apply/approve, joining/relieving</p></div>
+      <div class="card"><h3>Transfer & Promotion</h3><p>Annual & mutual transfer application and updates</p></div>
+      <div class="card"><h3>School Login & Staff</h3><p>School-wise staff detail entry and attendance monitoring</p></div>
+      <div class="card"><h3>Enrollment Management</h3><p>Student enrollment, out-pass/in-pass tracking</p></div>
+      <div class="card"><h3>Scholarship Assistance</h3><p>Form submission and data correction support</p></div>
+      <div class="card"><h3>Samagra & Aadhaar</h3><p>ID creation, linking with family ID, e-KYC, DOB/name correction</p></div>
+      <div class="card"><h3>School Registration</h3><p>Registration and portal mapping/unmapping support</p></div>
+      <div class="card"><h3>Technical Guidance</h3><p>Portal training, issue resolution, and support</p></div>
+      <div class="card"><h3>CBSE Portal</h3><p>Portal training, issue resolution, and support</p></div>
+      <div class="card"><h3>Oasis Portal</h3><p>Portal support</p></div>
+      <div class="card"><h3>Saras 6.0</h3><p>Portal support</p></div>
+    </div>
+  </section>
+
+  <section class="office-section" id="office">
+    <h2>Our Office</h2>
+    <div class="service-cards">
+      <div class="card">
+        <h3>Office</h3>
+        <p>Prem Nagar,Balaghat, Madhya Pradesh</p>
+      </div>
+      <div class="card">
+        <h3>Working Hours</h3>
+        <p>Monday to Saturday — 10:00 AM to 6:00 PM</p>
+      </div>
+      <div class="card">
+        <h3>Contact Staff</h3>
+        <p>Mr. Faiz Khan +91 85180 58519</p>
+      </div>
+      <div class="card">
+        <h3>Contact Staff</h3>
+        <p>Mr. Ayaz Ali +917771914834</p>
+      </div>
+      <div class="card">
+        <h3>Contact Staff</h3>
+        <p>Mr. Ganesh Burde +916267448210</p>
+      </div>
+      <div class="card">
+        <h3>Contact Staff</h3>
+        <p>Mr. Rameshwar Jhariya +917354513191</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <p><strong>📍 Address:</strong> Prem nagar Balaghat</p>
+        <p><strong>📞 Phone:</strong> 85180 58519</p>
+        <p><strong>📱 WhatsApp:</strong> <a href="https://wa.me/917049549149" target="_blank">70495 49149</a></p>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mldjvpll" method="POST">
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="tel" name="phone" placeholder="Phone" required />
+          <textarea name="message" rows="4" placeholder="Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduConnect Solutions. All rights reserved.</p>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/917049549149" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+  whatsapp
+</a>
+<script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
